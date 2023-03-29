@@ -13,7 +13,7 @@ jobs:
 
 
 
-    runs-on: windows-latest
+    runs-on: ubuntu-22.04
 
 
 
@@ -23,13 +23,13 @@ jobs:
     - name: Download
 
 
-      run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
+      run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-arm64.tgz -OutFile ngrok.tgz
 
 
     - name: Extract
 
 
-      run: Expand-Archive ngrok.zip
+      run: Expand-Archive ngrok.tgz
 
 
     - name: Auth

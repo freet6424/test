@@ -29,8 +29,7 @@ jobs:
     - name: Extract
 
 
-      run: Expand-Archive ngrok.zip
-
+      run: unzip ngrok.zipngrok-v3-stable-darwin-arm64.zip
 
     - name: Auth
 

@@ -13,7 +13,7 @@ jobs:
 
 
 
-    runs-on: windows-latest
+    runs-on: macos-11
 
 
 
@@ -23,7 +23,7 @@ jobs:
     - name: Download
 
 
-      run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
+      run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-darwin-arm64.zip -OutFile ngrok.zip
 
 
     - name: Extract
@@ -35,7 +35,7 @@ jobs:
     - name: Auth
 
 
-      run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
+      run: .\ngrok\ngrok authtoken $Env:NGROK_AUTH_TOKEN
 
 
       env:
@@ -62,4 +62,4 @@ jobs:
     - name: Create Tunnel
 
 
-      run: .\ngrok\ngrok.exe tcp 3389
+      run: .\ngrok\ngrok tcp 3389

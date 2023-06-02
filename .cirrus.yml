@@ -1,19 +1,20 @@
 env:
     CIRRUS_CLONE_DEPTH: 1
     BUILD_HOSTNAME: "cirrus-ci.org"
+    token: "ENCRYPTED[!c61de058b99d08e6e4fa4be1056a271b2e99639454577b8ecab8da438613828841c80c38307696eb9f9e1b22fa7efee2!]"
 
 task:
   name: "Compile_Rom"
   timeout_in: 4h
   container:
-      image: windows-latest
+      image: windows:latest
       cpu: 2
       memory: 4G
     
   download_script:
     - Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
     - Expand-Archive ngrok.zip
-    - .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
+    - .\ngrok\ngrok.exe authtoken $token
     - Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
     - Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
     - Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
